@@ -1,0 +1,140 @@
+<!--
+  @description       : 
+  @author            : Vamsi Mudaliar
+  @group             : 
+  @last modified on  : 02-09-2023
+  @last modified by  : Vamsi Mudaliar
+-->
+<template>
+
+    <c-eccheading-information onselect={tableViewHandler}></c-eccheading-information>
+   
+    <div class="tablewrapper">
+        <table align="center" aria-label="Opportunity Line Item Sales Information">
+            <thead>
+            <tr class="">
+            <template for:each={tableColumns} for:item="column">
+                <th class="table-columns" key={column} >
+                   {column}
+                </th>
+            </template>
+            <!-- This is to get Monthly Revenue Details -->
+            <template if:true={showMonthlyData}>
+                <template for:each={revenueMonthsList} for:item="monthRec">
+                    <th class="table-columns" key={monthRec} >
+                        {monthRec}
+                    </th>
+                </template>
+            </template>
+            <!-- This is to get Yearly Revenue Details -->
+            <template if:false={showMonthlyData}>
+                <template for:each={revenueYearsList} for:item="yearRecord">
+                    <th class="table-columns" key={yearRecord} >
+                        {yearRecord}
+                    </th>
+                </template>
+            </template>
+            </tr>
+            </thead>
+            <tbody>
+            <template for:each={fetchTableData} for:item="row">
+                <tr class="" key={row.recordId}>
+                    <th data-label="Opportunity Product Name" > 
+                        <!-- scope="row" -->
+                      
+                            {row.productName}
+                        
+                    </th>
+                    <td data-label="Option">
+                   {row.optionItemName}
+                    </td>
+                    <td data-label="Attributes">
+                   {row.attributes}
+                    </td>
+                    <td data-label="Revenue Type">
+                    {row.revenueType}
+                    </td>
+                    <td data-label="Quantity">
+                    {row.displayQty}
+                    </td>
+                    <td data-label="Unit Price">
+                    {row.displayUnitPrice}
+                    </td>
+                    <td data-label="Start Month">
+                    
+                        {row.startMonth}
+                   
+                    </td>
+                    <td data-label="Months">
+                       
+                            {row.months}
+                    
+                    </td>
+                    <td data-label="Revenue Recognition Name">
+                            {row.revenueRecognitionName}
+                    </td>
+                    <td data-label="Commiteed">
+                            {row.committed}
+                    </td>
+    
+                <!-- Used to Fetch Monthly Revenue Details -->
+                <template if:true={showMonthlyData}>
+                    <template for:each={row.monthInfo} for:item="monthRec">
+                        <td data-label="Monthly Amount" key={monthRec}>
+                           {monthRec}
+                        </td>
+                    </template>
+                </template>
+    
+                <!-- Used to Fetch yearly Revenue Details -->
+                <template if:false={showMonthlyData}>
+                     <template for:each={row.yearInfo} for:item="yearRec">
+                                <td data-label="Yearly Amount" key={yearRec}>
+                                   {yearRec}
+                                </td>
+                    </template>
+                </template>
+                </tr>
+            </template>
+         
+            <!-- Adding this Row for Displaying Summary Fields -->
+            <tr class="">
+                <th data-label="Product Name" scope="row"></th>
+                <td data-label="Option"></td>
+                <td data-label="Attribute"></td>
+                <td data-label="Revenue Type"></td>
+                <td data-label="Quantity"></td>
+                <td data-label="Unit Price"></td>
+                <td data-label="Start Month"></td>
+                <td data-label="Months"></td>
+                <td data-label="Revenue Recognition"></td>
+                <td data-label="Commited"></td>
+                
+                <!-- Used to Fetch Monthly Revenue Summary. -->
+                <template if:true={showMonthlyData}>
+                    <template for:each={monthlyRevenueSummary} for:item="rec">
+                        <td key={rec} data-label="Monthly Revenue Summary Detail">
+                          
+                                <strong>{rec}</strong> 
+                        </td>
+                    </template>
+                </template>
+    
+                <!-- Used to Fetch Annual Revenue Summary. -->
+                <template if:false={showMonthlyData}>
+                    <template for:each={annualRenenueSummary} for:item="rec">
+                        <td key={rec} data-label="Annual Revenue Summary Detail">
+                         
+                                <strong>{rec}</strong> 
+                        
+                        </td>
+                    </template>
+                </template>
+            </tr>
+            </tbody>
+            </table>
+    
+    
+</div>
+
+</template>

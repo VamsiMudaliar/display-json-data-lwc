@@ -1,0 +1,55 @@
+
+.forecast-heading{
+    height: 60px;
+    background-color: #ffff;
+    align-items: center;
+    display: flex;
+    padding-left: 10px;
+    font-weight: bold;
+    font-size: large;
+    letter-spacing: 0.5px;
+}
+
+.demo-only{
+    display: flex;
+    flex-direction: row-reverse;
+    max-height: 100px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.header-item-reverse {
+    margin-left: auto;
+    padding-right: 20px;
+    margin-bottom: 25px;
+}
+
+.header-styles {
+    display: flex;
+    flex-direction: column;
+    max-height: 100px;
+}
+
+.filter-styles { 
+    background-color: #acacac;
+    cursor: pointer;
+    display: flex;
+    align-items: stretch;
+    text-decoration: none solid rgb(255,255,255);
+}
+
+button {
+    background-color:#acacac;
+    color:#ffff;
+    padding-left: 10px;
+    padding-right: 10px;
+    border: none;
+    width: 100px;
+    font-size: 11px;
+    border-radius: 3px;
+    font-weight: bold;
+}
+
+lightning-button-menu,lightning-button-menu:hover {
+    color:#ffff;
+}

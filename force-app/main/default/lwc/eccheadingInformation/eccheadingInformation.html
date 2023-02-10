@@ -1,0 +1,40 @@
+<!--
+  @description       : 
+  @author            : Vamsi Mudaliar
+  @group             : 
+  @last modified on  : 02-09-2023
+  @last modified by  : Vamsi Mudaliar
+-->
+<template>
+  <div class="header-styles">
+
+    <div class="forecast-heading">Forecast Name</div>
+
+    <div class="header-item-reverse">
+      <span class="filter-styles">
+        <button>VIEW</button>
+        <lightning-button-menu alternative-text="Show menu" menu-alignment="right" onclick={selectHandler}>
+          <template for:each={optionList} for:item="option">
+            <lightning-menu-item  
+              key={option.id} 
+              data-index={option.id}
+              label={option.label}
+              value={option.value}
+              checked={option.checked}>
+            </lightning-menu-item>
+
+          </template>
+        </lightning-button-menu>
+      </span>
+     
+
+
+
+
+    </div>
+    
+    </div>
+ 
+
+
+</template>
